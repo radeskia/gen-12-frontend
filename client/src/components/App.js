@@ -4,7 +4,6 @@ import "../assets/styles/loginForm.css";
 import "../assets/styles/routeHeader.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//import Nav from "../components/widgets/navmenu/nav"
 import Error from "../components/ui/Messages/error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
