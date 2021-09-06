@@ -1,8 +1,8 @@
-// styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/loginForm.css";
 import "../assets/styles/routeHeader.css";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Error from "../components/ui/Messages/error";
 import Home from "./pages/Home";
@@ -17,6 +17,7 @@ import Brunch from "./pages/Brunch";
 import Breakfast from "./pages/Breakfast";
 
 const App = () => {
+
   return (
     <div className="App">
       <Router>

@@ -6,7 +6,10 @@ const Home = (props) => {
   return (
     <div>
       <RouteHeader title="Fresh & New" />
-      <Dashboard />      
+      <Dashboard route="latest"/>
+      <RouteHeader title="Most Popular Recipes" />
+      <Dashboard route="popular"/>
+      
     </div>
   );
 };

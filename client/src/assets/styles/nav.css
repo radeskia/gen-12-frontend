@@ -54,6 +54,7 @@
 }
 
 .button {
+    display: inline-block;
     font: var(--unnamed-font-style-normal) normal 900 16px/21px
         var(--unnamed-font-family-roboto);
     padding: 10px 30px;

@@ -1,13 +1,12 @@
-import { useState } from "react";
 import Logo from "../widgets/Logo";
 import Nav from "../widgets/navmenu/nav";
 import Button from "../widgets/Button";
 import NavItem from "../widgets/NavItem";
-import jwt_decode from "jwt-decode";
 import "../../assets/styles/nav.css";
 
-const Header = () => {
-  const [user, setUser] = useState(false);
+const Header = (props) => {
+  let user = props.user;
+
 
   return (
     <div

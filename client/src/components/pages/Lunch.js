@@ -6,7 +6,7 @@ function Lunch(props) {
   return (
     <div>
       <RouteHeader title="Lunch" />
-      <Dashboard />
+      <Dashboard route="lunch"/>      
     </div>
   );
 }
