@@ -7,7 +7,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const submitLogin = () => {
-    axios.post('http://localhost:3002/login', {
+    axios.post('http://localhost:3000/login', {
       email,
       password,
     })
