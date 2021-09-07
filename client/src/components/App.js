@@ -8,7 +8,7 @@ import Error from "../components/ui/Messages/error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Create from "./pages/RecipeCreate";
+import MyRecipes from "./pages/MyRecipes";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import Dinner from "./pages/Dinner";
@@ -65,8 +65,8 @@ const App = () => {
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/create">
-              <Create />
+            <Route path="/myrecipes">
+              <MyRecipes />
             </Route>
             <Route path="/lunch">
               <Lunch />

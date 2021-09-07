@@ -1,28 +1,30 @@
 import { Col, Row, Form, Button, Container } from "react-bootstrap";
-import Calendar from "../widgets/calendar";
 import { useState } from "react";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "../../assets/styles/calendar.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const RegisterForm = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
   const [password, setPassword] = useState("");
+  const [startDate, setStartDate] = useState("");
 
   const submitRegister = () => {
-    let reg = {
+    let obj = {
       first_name: firstname,
       last_name: lastname,
       email: email,
-      birthday: birthday,
-      password: password
-    }
-
-    console.log('register with this: ', reg)
+      birthday: startDate,
+      password: password,
+    };
+    console.log(startDate);
+    console.log("register with this: ", obj);
 
     axios
-      .post("http://localhost:3002/register", reg)
+      .post("http://localhost:3000/register", obj)
       .then((res) => {
         console.log(res);
       })
@@ -83,11 +85,11 @@ const RegisterForm = () => {
 
                 <Form.Group as={Col} controlId="formGroupEmail">
                   <Form.Label>Birthday</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="birthday"
-                    placeholder="Enter birthday"
-                    onChange={(e) => setBirthday(e.target.value)}
+                  <DatePicker
+                    className="inputCal"
+                    dateFormat="dd/MM/yyyy"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
                   />
                 </Form.Group>
               </Row>
