@@ -81,10 +81,14 @@ const RegisterForm = () => {
                   />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="form-control">
+                <Form.Group as={Col} controlId="formGroupEmail">
                   <Form.Label>Birthday</Form.Label>
-                  <br />
-                  <Calendar birthday={birthday} setBirthday={setBirthday}/>
+                  <Form.Control
+                    type="text"
+                    name="birthday"
+                    placeholder="Enter birthday"
+                    onChange={(e) => setBirthday(e.target.value)}
+                  />
                 </Form.Group>
               </Row>
               <Row className="mb-3">
