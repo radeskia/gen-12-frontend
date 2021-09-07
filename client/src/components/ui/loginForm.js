@@ -1,32 +1,12 @@
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
+//import axios from "axios";
+//import jwt_decode from "jwt-decode";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const {submitLogin} = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submitLogin = () => {
-    axios
-      .post("http://localhost:3000/login", {
-        email,
-        password,
-      })
-      .then((res) => {
-        if (res.data.token) {
-          console.log("Login Successful!");
-          localStorage["token"] = res.data.token;
-          const userToken = localStorage.getItem("token");
-          const userName = jwt_decode(userToken).email;
-          console.log(userName);
-          localStorage['username'] = userName;
-        }
-      })
-      .catch((err) => {
-        console.log("Login Failed");
-        console.log(err);
-      });
-  };
 
   return (
     <Container>
@@ -70,7 +50,7 @@ const LoginForm = () => {
               <Button
                 className="greenButton"
                 variant="primary"
-                onClick={submitLogin}
+                onClick={() => submitLogin(email, password)}
               >
                 Log In
               </Button>

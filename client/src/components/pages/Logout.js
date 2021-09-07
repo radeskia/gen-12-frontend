@@ -1,24 +1,23 @@
 import React from "react";
 import RouteHeader from "../widgets/routeheader";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
-function Logout() {
-  const [reload, setReload] = useState(false);
+function Logout(props) {
+  const {setLogged} = props;
+  
   useEffect(() => {
     axios
       .get("http://localhost:3000/logout")
-      .then((res) => console.log(res.data.message))
-      .then(localStorage.clear())
-      .then(setReload(true));
+      .then((res) => {
+        console.log(res.data.message);
+        setLogged(false);
+      })
+      .then(localStorage.clear());
   }, []);
   return (
     <div>
-      {reload ? (
-        <RouteHeader title="Logged out!" />
-      ) : (
-        <RouteHeader title="Logged out!" />
-      )}
+      <RouteHeader title="Logged out!" />
     </div>
   );
 }

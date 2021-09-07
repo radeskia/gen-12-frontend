@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/loginForm.css";
 import "../assets/styles/routeHeader.css";
-//import axios from "axios";
-//import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Error from "../components/ui/Messages/error";
 import Home from "./pages/Home";
@@ -16,19 +16,51 @@ import Lunch from "./pages/Lunch";
 import Brunch from "./pages/Brunch";
 import Breakfast from "./pages/Breakfast";
 import Logout from "./pages/Logout";
+import jwt_decode from "jwt-decode";
 
 const App = () => {
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("username")) {
+      if (!logged) setLogged(true);
+    }
+  }, []);
+
+  const submitLogin = (email, password) => {
+    axios
+      .post("http://localhost:3000/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+        if (res.data.token) {
+          console.log("Login Successful!");
+          localStorage["token"] = res.data.token;
+          const userToken = localStorage.getItem("token");
+          const userName = jwt_decode(userToken).email;
+          console.log(userName);
+          localStorage["username"] = userName;
+          setLogged(true);
+        }
+      })
+      .catch((err) => {
+        console.log("Login Failed");
+        console.log(err);
+      });
+  };
+
   return (
     <div className="App">
       <Router>
         <div>
-          <Header />
+          <Header logged={logged} />
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
             <Route path="/login">
-              <Login />
+              <Login submitLogin={submitLogin} />
             </Route>
             <Route path="/register">
               <Register />
@@ -49,7 +81,7 @@ const App = () => {
               <Brunch />
             </Route>
             <Route path="/logout">
-              <Logout />
+              <Logout setLogged={setLogged} />
             </Route>
             <Route path="*">
               <Error />

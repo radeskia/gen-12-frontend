@@ -6,10 +6,11 @@ import "react-datepicker/dist/react-datepicker.css";
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-const Calendar = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const Calendar = (props) => {
+  const {birthday, setBirthday} = props;
+  
   return (
-    <DatePicker className="inputCal" dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
+    <DatePicker className="inputCal" dateFormat="dd/MM/yyyy" selected={birthday} onChange={(date) => setBirthday(date)} />
   );
 };
 export default Calendar;

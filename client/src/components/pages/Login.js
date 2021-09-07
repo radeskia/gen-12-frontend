@@ -1,11 +1,12 @@
 import LoginForm from "../ui/loginForm";
 import RouteHeader from "../widgets/routeheader";
 
-const Login = () => {
+const Login = (props) => {
+  const {submitLogin} = props;
   return (
     <div>
       <RouteHeader title='Log In'/>,
-      <LoginForm />
+      <LoginForm submitLogin={submitLogin} />
     </div>
   );
 };

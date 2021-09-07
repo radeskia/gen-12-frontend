@@ -3,15 +3,15 @@ import Nav from "../widgets/navmenu/nav";
 import Button from "../widgets/Button";
 import NavItem from "../widgets/NavItem";
 import "../../assets/styles/nav.css";
-import { useState, useEffect } from "react";
 
+
+/**
+ * 
+ * @param {Boolean} props.logged
+ * @returns 
+ */
 const Header = (props) => {
-  const [user, setUser] = useState(false);
-  useEffect(() => {
-    if (localStorage.getItem("username")) {
-      setUser(true);
-    }
-  }, []);
+  const {logged} = props;
 
   return (
     <div
@@ -24,7 +24,7 @@ const Header = (props) => {
     >
       <Logo />
       <Nav />
-      {user ? (
+      {logged ? (
         <ul style={{ display: "flex", marginRight: "40px" }}>
           <NavItem
             where={"/myrecipes"}
@@ -43,9 +43,6 @@ const Header = (props) => {
             where={"/logout"}
             text={"Log Out"}
             border={"border"}
-            onClick={() => {
-              setUser(!user);
-            }}
           />
         </ul>
       ) : (
