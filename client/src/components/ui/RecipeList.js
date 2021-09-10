@@ -1,12 +1,12 @@
 import React from "react";
-import { Table, Button, Container } from "react-bootstrap";
+import { Table, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 function RecipeList(props) {
   const [data, setData] = useState();
   const user = localStorage.getItem("username");
-  const [toDelete, setToDelete] = useState("");
+//  const [toDelete, setToDelete] = useState("");
 
   useEffect(() => {
     axios.get(`/myrecipes/${user}`).then((res) => {
@@ -14,7 +14,6 @@ function RecipeList(props) {
     });
   }, []);
 
-  //console.log(toDelete);
 
   return (
     <div>

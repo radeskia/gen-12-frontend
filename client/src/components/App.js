@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/loginForm.css";
 import "../assets/styles/routeHeader.css";
+import "../assets/styles/recipeForm.css"
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,6 +18,7 @@ import Brunch from "./pages/Brunch";
 import Breakfast from "./pages/Breakfast";
 import Logout from "./pages/Logout";
 import jwt_decode from "jwt-decode";
+import Create from "./ui/CreateRecipe"
 
 const App = () => {
   const [logged, setLogged] = useState(false);
@@ -78,6 +80,9 @@ const App = () => {
             </Route>
             <Route path="/brunch">
               <Brunch />
+            </Route>
+            <Route path="/create">
+              <Create />
             </Route>
             <Route path="/logout">
               <Logout setLogged={setLogged} />
