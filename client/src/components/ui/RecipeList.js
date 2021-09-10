@@ -6,12 +6,15 @@ import axios from "axios";
 function RecipeList(props) {
   const [data, setData] = useState();
   const user = localStorage.getItem("username");
+  const [toDelete, setToDelete] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3002/myrecipes/${user}`).then((res) => {
+    axios.get(`/myrecipes/${user}`).then((res) => {
       setData(res.data);
     });
   }, []);
+
+  //console.log(toDelete);
 
   return (
     <div>
@@ -33,7 +36,7 @@ function RecipeList(props) {
                     <td>{x.recipe_title}</td>
                     <td>{x.recipe_category}</td>
                     <td>{x.date}</td>
-                    <td>@deleteFunc</td>
+                    <td>Delete</td>
                   </tr>
                 );
               })}

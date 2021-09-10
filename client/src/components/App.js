@@ -29,7 +29,7 @@ const App = () => {
 
   const submitLogin = (email, password) => {
     axios
-      .post("http://localhost:3000/login", {
+      .post("/login", {
         email,
         password,
       })
@@ -38,8 +38,7 @@ const App = () => {
           console.log("Login Successful!");
           localStorage["token"] = res.data.token;
           const userToken = localStorage.getItem("token");
-          const userName = jwt_decode(userToken).email;
-          console.log(userName);
+          const userName = jwt_decode(userToken).id;
           localStorage["username"] = userName;
           setLogged(true);
         }

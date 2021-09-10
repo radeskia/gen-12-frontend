@@ -24,7 +24,7 @@ const RegisterForm = () => {
     console.log("register with this: ", obj);
 
     axios
-      .post("http://localhost:3000/register", obj)
+      .post("/register", obj)
       .then((res) => {
         console.log(res);
       })

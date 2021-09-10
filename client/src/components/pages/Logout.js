@@ -8,7 +8,7 @@ function Logout(props) {
   
   useEffect(() => {
     axios
-      .get("http://localhost:3000/logout")
+      .get("/logout")
       .then((res) => {
         console.log(res.data.message);
         setLogged(false);

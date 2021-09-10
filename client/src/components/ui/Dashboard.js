@@ -6,7 +6,7 @@ import "../../assets/styles/dashboard.css";
 function Dashboard(props) {
   const [data, setData] = useState();
 
-  const apiURL = `http://localhost:3002/${props.route}`;
+  const apiURL = `/${props.route}`;
 
   useEffect(() => {
     async function fetchData() {
