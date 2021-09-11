@@ -6,17 +6,21 @@ import React, { useState } from "react";
 
 const MyRecipes = () => {
   const [createPage, setCreatePage] = useState(false);
-
+  const [button, setButton] = useState("Create");
+  const handleClick = () => {
+    setCreatePage(!createPage);
+    if (createPage) {
+      setButton("Create");
+    } else {
+      setButton("My Recipes");
+    }
+  };
   return (
     <div>
       <RouteHeader title="My Recipes" />
       <Container>
-        <Button
-          className="greenButton"
-          variant="primary"
-          onClick={() => setCreatePage(!createPage)}
-        >
-          Create
+        <Button className="greenButton" variant="primary" onClick={handleClick}>
+          {button}
         </Button>
       </Container>
       <br />

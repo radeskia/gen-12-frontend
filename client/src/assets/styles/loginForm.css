@@ -75,10 +75,7 @@ p {
 }
 
 .greenButton {
-  /* top: 40.56rem;
-  left: 53.25rem;
-  width: 7.688rem;
-  height: 2.5rem; */
+
   padding: 10px 30px;
   background: var(--green) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;

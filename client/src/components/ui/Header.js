@@ -25,7 +25,7 @@ const Header = (props) => {
       <Logo />
       <Nav />
       {logged ? (
-        <ul style={{ display: "flex", marginRight: "40px" }}>
+        <ul style={{ display: "flex"}}>
           <NavItem
             where={"/myrecipes"}
             text={"My Recipies"}

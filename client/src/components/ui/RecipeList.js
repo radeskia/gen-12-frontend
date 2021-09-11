@@ -1,19 +1,18 @@
 import React from "react";
-import { Table, Container } from "react-bootstrap";
+import { Table, Container, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 function RecipeList(props) {
   const [data, setData] = useState();
   const user = localStorage.getItem("username");
-//  const [toDelete, setToDelete] = useState("");
+  //  const [toDelete, setToDelete] = useState("");
 
   useEffect(() => {
     axios.get(`/myrecipes/${user}`).then((res) => {
       setData(res.data);
     });
   }, []);
-
 
   return (
     <div>
@@ -35,7 +34,18 @@ function RecipeList(props) {
                     <td>{x.recipe_title}</td>
                     <td>{x.recipe_category}</td>
                     <td>{x.date}</td>
-                    <td>Delete</td>
+                    <td>
+                      <Button
+                        style={{ padding: 5 }}
+                        className="greenButton"
+                        variant="primary"
+                        onClick={() => {
+                          axios.delete(`/${x._id}`);
+                        }}
+                      >
+                        <span className="material-icons">delete</span>
+                      </Button>
+                    </td>
                   </tr>
                 );
               })}
