@@ -1,9 +1,7 @@
+import RouteHeader from "../../widgets/routeheader";
+
 const Error = () => {
-    return (
-        <>
-            <div>Error 🔥🔥🔥</div>
-        </>
-    );
+  return <RouteHeader title="404 Not Found" />;
 };
 
 export default Error;

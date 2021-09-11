@@ -4,6 +4,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "../../assets/styles/calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
 
 const RegisterForm = () => {
   const [firstname, setFirstName] = useState("");
@@ -11,6 +12,8 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [startDate, setStartDate] = useState("");
+
+  let history = useHistory();
 
   const submitRegister = () => {
     let obj = {
@@ -20,16 +23,15 @@ const RegisterForm = () => {
       birthday: startDate,
       password: password,
     };
-    console.log(startDate);
-    console.log("register with this: ", obj);
 
     axios
       .post("/register", obj)
       .then((res) => {
         console.log(res);
+        history.push("/login");
       })
       .catch((err) => {
-        console.log("Login Failed");
+        console.log("Register Failed");
         console.log(err);
       });
   };
@@ -117,7 +119,6 @@ const RegisterForm = () => {
               <Button
                 className="greenButton"
                 variant="primary"
-                type="submit"
                 onClick={submitRegister}
               >
                 Create account

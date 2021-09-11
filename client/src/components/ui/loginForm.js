@@ -4,7 +4,7 @@ import { useState } from "react";
 //import jwt_decode from "jwt-decode";
 
 const LoginForm = (props) => {
-  const {submitLogin} = props;
+  const { submitLogin } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

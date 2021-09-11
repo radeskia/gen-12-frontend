@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/loginForm.css";
 import "../assets/styles/routeHeader.css";
-import "../assets/styles/recipeForm.css"
+import "../assets/styles/recipeForm.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -18,9 +18,12 @@ import Brunch from "./pages/Brunch";
 import Breakfast from "./pages/Breakfast";
 import Logout from "./pages/Logout";
 import jwt_decode from "jwt-decode";
-import Create from "./ui/CreateRecipe"
+import Create from "./ui/CreateRecipe";
+import { useHistory } from "react-router-dom";
 
 const App = () => {
+  let history = useHistory();
+
   const [logged, setLogged] = useState(false);
 
   useEffect(() => {
@@ -43,6 +46,8 @@ const App = () => {
           const userName = jwt_decode(userToken).id;
           localStorage["username"] = userName;
           setLogged(true);
+          history.push("/myrecipes");
+          history.go(0);
         }
       })
       .catch((err) => {

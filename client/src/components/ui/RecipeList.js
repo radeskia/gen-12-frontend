@@ -2,11 +2,13 @@ import React from "react";
 import { Table, Container, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function RecipeList(props) {
   const [data, setData] = useState();
   const user = localStorage.getItem("username");
   //  const [toDelete, setToDelete] = useState("");
+  let history = useHistory();
 
   useEffect(() => {
     axios.get(`/myrecipes/${user}`).then((res) => {
@@ -40,7 +42,10 @@ function RecipeList(props) {
                         className="greenButton"
                         variant="primary"
                         onClick={() => {
-                          axios.delete(`/${x._id}`);
+                          axios.delete(`/${x._id}`).then((res) => {
+                            console.log(res);
+                            history.go(0);
+                          });
                         }}
                       >
                         <span className="material-icons">delete</span>
