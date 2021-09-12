@@ -4,22 +4,40 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 function CreateRecipe() {
+  let history = useHistory();
+
   const [recipe_title, setRecipe_title] = useState("");
   const [recipe_content, setRecipe_content] = useState("");
-  const [recipe_image, setRecipe_image] = useState("");
-  const [recipe_category, setRecipe_category] = useState("");
+//   const [recipe_image, setRecipe_image] = useState("");
+  const [recipe_category, setRecipe_category] = useState("Breakfast");
   const [recipe_description, setRecipe_description] = useState("");
   const [recipe_prep_time, setRecipe_prep_time] = useState("");
   const [number_of_people, setNumber_of_people] = useState("");
   const author = localStorage.getItem("username");
 
-  let history = useHistory();
+  //Image preview and main cloudinary pipeline
+//   const [fileInputState, setFileInputState] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
+//   const [selectedFile, setSelectedFile] = useState("");
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
 
   const submitRecipe = () => {
     let obj = {
       recipe_title: recipe_title,
       recipe_content: recipe_content,
-      recipe_image: author,
+      recipe_image: previewSource,
       recipe_category: recipe_category,
       recipe_description: recipe_description,
       recipe_prep_time: recipe_prep_time,
@@ -55,12 +73,25 @@ function CreateRecipe() {
                       width={191}
                       height={200}
                       alt="191x200"
-                      src="https://coolwallpapers.me/picsup/2723041-pizza-4k-free-wallpaper-for-desktop.jpg"
+                      src={previewSource}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src =
+                          "https://coolwallpapers.me/picsup/2723041-pizza-4k-free-wallpaper-for-desktop.jpg";
+                      }}
                     />
                   </Figure>
-                  <Button style={{ margin: 20 }} variant="outline-secondary">
+
+                  <Form.Control
+                    style={{ width: 104, margin: 30 }}
+                    type="file"
+                    name="recipe_image"
+                    onChange={handleFileInputChange}
+                    // value={fileInputState}
+                  />
+                  {/* <Button style={{ margin: 20 }} variant="outline-secondary">
                     Upload Image
-                  </Button>
+                  </Button> */}
                 </Form.Group>
               </Col>
               <Col md={5}>

@@ -58,7 +58,9 @@ function Dashboard(props) {
               <Card className="card" key={index}>
                 <Card.Img
                   variant="top"
-                  src="https://coolwallpapers.me/picsup/2723041-pizza-4k-free-wallpaper-for-desktop.jpg"
+                  style={{ width: "100%", height: "15vw", objectFit: "cover" }}
+                  // src="https://coolwallpapers.me/picsup/2723041-pizza-4k-free-wallpaper-for-desktop.jpg"
+                  src={x.recipe_image}
                   className="fluid"
                 />
                 <Card.Body>
@@ -121,7 +123,12 @@ function Dashboard(props) {
                     <Row>
                       <Card.Img
                         variant="top"
-                        src="https://coolwallpapers.me/picsup/2723041-pizza-4k-free-wallpaper-for-desktop.jpg"
+                        style={{
+                          width: "100%",
+                          height: "15vw",
+                          objectFit: "cover",
+                        }}
+                        src={dataModal[4]}
                         className="fluid "
                       />
                     </Row>
