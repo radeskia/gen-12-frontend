@@ -8,17 +8,14 @@ function CreateRecipe() {
 
   const [recipe_title, setRecipe_title] = useState("");
   const [recipe_content, setRecipe_content] = useState("");
-//   const [recipe_image, setRecipe_image] = useState("");
   const [recipe_category, setRecipe_category] = useState("Breakfast");
   const [recipe_description, setRecipe_description] = useState("");
   const [recipe_prep_time, setRecipe_prep_time] = useState("");
   const [number_of_people, setNumber_of_people] = useState("");
   const author = localStorage.getItem("username");
 
-  //Image preview and main cloudinary pipeline
-//   const [fileInputState, setFileInputState] = useState("");
+  //Image preview and main image handling 
   const [previewSource, setPreviewSource] = useState("");
-//   const [selectedFile, setSelectedFile] = useState("");
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -87,11 +84,7 @@ function CreateRecipe() {
                     type="file"
                     name="recipe_image"
                     onChange={handleFileInputChange}
-                    // value={fileInputState}
                   />
-                  {/* <Button style={{ margin: 20 }} variant="outline-secondary">
-                    Upload Image
-                  </Button> */}
                 </Form.Group>
               </Col>
               <Col md={5}>

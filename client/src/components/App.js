@@ -18,8 +18,8 @@ import Brunch from "./pages/Brunch";
 import Breakfast from "./pages/Breakfast";
 import Logout from "./pages/Logout";
 import jwt_decode from "jwt-decode";
-import Create from "./ui/CreateRecipe";
 import { useHistory } from "react-router-dom";
+import MyProfile from "./pages/MyProfile";
 
 const App = () => {
   let history = useHistory();
@@ -86,9 +86,10 @@ const App = () => {
             <Route path="/brunch">
               <Brunch />
             </Route>
-            <Route path="/create">
-              <Create />
+            <Route path="/myprofile">
+              <MyProfile />
             </Route>
+
             <Route path="/logout">
               <Logout setLogged={setLogged} />
             </Route>
