@@ -44,7 +44,7 @@ function CreateRecipe() {
     console.log(obj);
 
     axios
-      .post("/create", obj)
+      .post("/api/create", obj)
       .then((res) => {
         console.log(res);
         history.push("/");

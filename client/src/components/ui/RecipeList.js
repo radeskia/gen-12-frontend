@@ -11,7 +11,7 @@ function RecipeList(props) {
   let history = useHistory();
 
   useEffect(() => {
-    axios.get(`/myrecipes/${user}`).then((res) => {
+    axios.get(`/api/myrecipes/${user}`).then((res) => {
       setData(res.data);
     });
   }, []);
@@ -42,7 +42,7 @@ function RecipeList(props) {
                         className="greenButton"
                         variant="primary"
                         onClick={() => {
-                          axios.delete(`/${x._id}`).then((res) => {
+                          axios.delete(`/api/${x._id}`).then((res) => {
                             console.log(res);
                             history.go(0);
                           });

@@ -8,7 +8,7 @@ function Logout(props) {
   
   useEffect(() => {
     axios
-      .get("/logout")
+      .get("/api/logout")
       .then((res) => {
         console.log(res.data.message);
         setLogged(false);

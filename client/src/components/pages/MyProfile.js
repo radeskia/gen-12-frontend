@@ -24,7 +24,12 @@ function MyProfile() {
   const [previewSource, setPreviewSource] = useState("");
 
   useEffect(() => {
-    axios.get(`/${author}`).then((res) => {
+    axios.get(`/api/${author}`).then((res) => {
+      if (res.data.message === "no image") {
+        return setOldAvatar(
+          "https://static.wikia.nocookie.net/club-penguin-rewritten/images/c/c0/Sensei.png"
+        );
+      }
       setOldAvatar(res.data);
     });
   }, []);
@@ -55,7 +60,7 @@ function MyProfile() {
     };
 
     axios
-      .put(`/update`, obj)
+      .put(`/api/update`, obj)
       .then((res) => {
         console.log(res);
         history.push("/myprofile");

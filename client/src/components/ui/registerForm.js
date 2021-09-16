@@ -25,7 +25,7 @@ const RegisterForm = () => {
     };
 
     axios
-      .post("/register", obj)
+      .post("/api/register", obj)
       .then((res) => {
         console.log(res);
         history.push("/login");

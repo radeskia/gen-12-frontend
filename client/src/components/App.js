@@ -34,7 +34,7 @@ const App = () => {
 
   const submitLogin = (email, password) => {
     axios
-      .post("/login", {
+      .post("/api/login", {
         email,
         password,
       })
