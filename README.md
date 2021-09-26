@@ -8,9 +8,10 @@
 This is the client side design for the final project at Semos Full-Stack Javascript development Academy. Built with React, styled using basic Bootstrap layouts and some CSS styling
 
 
+
 ## Technologies used and summary
 
-This part of the project main purpose is the mastery and practice of the React library intended for building client-side interfaces, it features the usage of dynamic & reusable components, 
+This part of the project main purpose is the mastery and practice of the React library intended for building client-side interfaces, it features the usage of dynamic & reusable components, some minor npm modules, state managment, router play,  HTTP requests...
 
 The styling is done in several different ways (intentional, for practise purposes only) using mainly the Bootstrap library for react, as well as some inline styling of elements and classic external CSS files.
 
