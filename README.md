@@ -22,3 +22,5 @@ For routing im using the "react-router-dom" module, it's methods for rendering c
 Some minor modules that are included in the project are the "jwt-decode" which im using to extract the username from a jwt authentication token, and "react-datepicker" for a fancy date selection during user registration.
 
 The most interesting time while building this project was the practice and use of the state managment, use of props, conditional rendering and all the HTTP requests to and from the backend.
+
+Author Александар Радески @radeskia
