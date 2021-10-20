@@ -1,6 +1,7 @@
 # Baby's Food Place Project (Frontend)
 
 *Frontend web application for the recipe blog *
+( Demo deployed at https://quiet-caverns-74507.herokuapp.com )
 
 
 ## Short summary
