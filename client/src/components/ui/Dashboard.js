@@ -2,11 +2,13 @@ import { Row, Col, Button, Card, Container, Modal } from "react-bootstrap";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../../assets/styles/dashboard.css";
+import { useHistory } from "react-router-dom";
 
 function Dashboard(props) {
   const [data, setData] = useState();
-
+  const user = localStorage.getItem("username");
   const apiURL = `/api/${props.route}`;
+  let history = useHistory();
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +29,8 @@ function Dashboard(props) {
     recipe_prep_time,
     number_of_people,
     stars,
-    date
+    date,
+    _id
   ) => {
     let oneCard = [
       recipe_title,
@@ -39,6 +42,7 @@ function Dashboard(props) {
       number_of_people,
       stars,
       date,
+      _id
     ];
     setDataModal((x) => [1, ...oneCard]);
 
@@ -83,7 +87,8 @@ function Dashboard(props) {
                         x.recipe_prep_time,
                         x.number_of_people,
                         x.stars,
-                        x.date
+                        x.date,
+                        x._id
                       );
                     }}
                   >
@@ -96,8 +101,45 @@ function Dashboard(props) {
                         {x.recipe_prep_time} min{" "}
                         <span className="material-icons">restaurant</span>{" "}
                         {x.number_of_people} people
-                        <span className="material-icons">star_border</span>{" "}
-                        {x.stars} stars
+                        {x.stars.includes(user) ? (
+                          <span>
+                            <span
+                              className="material-icons"
+                              style={{cursor:"pointer"}}
+                              onClick={() => {
+                                axios
+                                  .patch(`/api/unstar/${x._id}/${user}`)
+                                  .then((res) => {
+                                    console.log(res);
+                                    history.go(0);
+
+                                  });
+                              }}
+                            >
+                              star
+                            </span>
+                            {x.stars.length} stars{" "}
+                          </span>
+                        ) : (
+                          <span>
+                            <span
+                              className="material-icons"
+                              style={{cursor:"pointer"}}
+                              onClick={() => {
+                                axios
+                                  .patch(`/api/star/${x._id}/${user}`)
+                                  .then((res) => {
+                                    console.log(res);
+                                    history.go(0);
+
+                                  });
+                              }}
+                            >
+                              star_border
+                            </span>
+                            {x.stars.length} stars{" "}
+                          </span>
+                        )}
                       </div>
                     }
                   </Card.Footer>
@@ -158,8 +200,45 @@ function Dashboard(props) {
                   <i className="material-icons">schedule</i> {dataModal[6]} min{" "}
                   <span className="material-icons">restaurant</span>{" "}
                   {dataModal[7]} people
-                  <span className="material-icons">star_border</span>{" "}
-                  {dataModal[8]} stars
+                  {dataModal[8].includes(user) ? (
+                          <span>
+                            <span
+                              className="material-icons"
+                              style={{cursor:"pointer"}}
+                              onClick={() => {
+                                axios
+                                  .patch(`/api/unstar/${dataModal[10]}/${user}`)
+                                  .then((res) => {
+                                    console.log(res);
+                                    history.go(0);
+
+                                  });
+                              }}
+                            >
+                              star
+                            </span>
+                            {dataModal[8].length} stars{" "}
+                          </span>
+                        ) : (
+                          <span>
+                            <span
+                              className="material-icons"
+                              style={{cursor:"pointer"}}
+                              onClick={() => {
+                                axios
+                                  .patch(`/api/star/${dataModal[10]}/${user}`)
+                                  .then((res) => {
+                                    console.log(res);
+                                    history.go(0);
+
+                                  });
+                              }}
+                            >
+                              star_border
+                            </span>
+                            {dataModal[8].length} stars{" "}
+                          </span>
+                        )}
                 </div>
               </Row>
             </Modal.Footer>
